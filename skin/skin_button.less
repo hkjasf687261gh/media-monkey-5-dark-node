@@ -1,0 +1,289 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.button {
+  display: inline-block;
+  padding: 6px 24px;
+  margin: @units0_5;
+  align-self: center;
+  white-space: nowrap;
+  text-align: center;
+}
+.rowButton {
+  padding: @textVerticalPadding @textHorizontalPadding; // vertical padding to be same as Dropdown or Edit
+  margin: 0 @units0_2;
+  line-height: initial;
+}
+.button:not([data-no-button]) {
+  background: @controlColor;
+  .grindEdge;
+  border: 1px solid @borderColor;
+  display: inline-block;
+  color: @textColor;
+  text-decoration: none;
+}
+.button:not([data-no-button])[data-disabled] {
+  opacity: 0.75;
+  border-color: desaturate(fadeout(@borderColor, 25%), 100%);
+}
+
+.button:hover:not([data-disabled]):not([data-no-button]) {
+  .controlHover;
+}
+.buttonPushEffect {
+  -webkit-transform: translate(1px, 1px);
+}
+.button:active:not([data-disabled]):not([data-no-button]) {
+  .buttonPushEffect;
+}
+.button[data-disabled] {
+  color: @disabledColor;
+}
+.button[data-disabled] label {
+  color: @disabledColor;
+}
+.button[data-default]:not([data-disabled]) {
+  // box-shadow: 0px 0px @units1_0 @highlightColor;
+}
+
+.toolbuttonbase {
+  padding: @toolButtonPadding;
+  align-content: center;
+  align-items: center;
+  label {
+    padding-left: @units0_15;
+    padding-right: @units0_15;
+  }
+  &:hover:not([data-disabled]),
+  &:hover:not([data-disabled]) label,
+  &:hover .ratingStar {
+    color: @hoverColor;
+    // -webkit-filter: drop-shadow(0px 0px @units0_4 @hoverColor);
+  }
+  &:active:not([data-disabled]) {
+    .buttonPushEffect;
+  }
+  &[data-disabled] {
+    fill: @disabledColor;
+    color: @disabledColor;
+  }
+  &:hover:not([data-disabled]) label[data-popuplabel] {
+    // box-shadow: 0px 0px @units0_2 @hoverColor;
+  }
+  &[data-selected] {
+    opacity: 1;
+  }
+  &:not([data-checked]).checkable {
+    opacity: 0.75;
+    fill: @disabledColor;
+    color: @disabledColor;
+    &:hover:not([data-disabled]) {
+      opacity: 1;
+    }
+  }
+  &.checkable[data-checked] {
+    opacity: 1;
+  }
+}
+
+@toolButtonSize: @units1_2;
+
+.toolButtonSize {
+  width: @toolButtonSize;
+  height: @toolButtonSize;
+}
+
+.toolButtonSizeLarger {
+  width: @units1_5;
+  height: @units1_5;
+}
+
+.toolbutton {
+  .toolbuttonbase;
+  .toolButtonSize;
+}
+
+.toolbar .toolbutton {
+  // buttons in toolbar should larger
+  .toolButtonSizeLarger;
+}
+
+.lvHeaderSingleItem .toolbutton {
+  // for butons inside LV single line header
+  padding: @units0_15;
+  margin: -@units0_15; // so hover is shown over padding too
+  width: @fontLineSize + @units0_15;
+  height: @fontLineSize + @units0_15;
+  background-color: fade(@headerColor, 80%);
+
+  .transparentBackground & {
+    background-color: transparent;
+  }
+}
+
+.noPadding .toolbutton {
+  padding: 0;
+}
+
+.lvHeaderSingleItem.menuButton {
+  border-color: transparent; // leave the border width default, so the button has correct whole size and placing
+  position: absolute;
+  z-index: 1; // so will be over the text
+  background-color: transparent;
+  & .toolbutton {
+    height: @lvItemHeight; // the same as height of lvItem
+  }
+}
+
+.toolbutton-background {
+  .toolbutton;
+  .cellBase;
+  .slightlytransparent;
+  .grindEdge;
+  .border;
+}
+
+.expandableButton div[data-icon] {
+  .toolButtonSize;
+}
+.button:focus {
+  .focused;
+}
+.buttons {
+  .flex;
+}
+.buttons.horizontal {
+  flex-flow: row nowrap;
+}
+.buttons.vertical {
+  flex-flow: column nowrap;
+}
+.buttons > .fill {
+  flex: 10 10 auto;
+  position: relative;
+}
+.buttons > .left,
+.buttons > .top {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: inherit;
+}
+.buttons > .right,
+.buttons > .bottom {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: inherit;
+}
+.buttons.center {
+  justify-content: center;
+}
+
+.selectButtonBg {
+  .clickable;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0px;
+  height: 0px;
+  margin: 0;
+  border-left: @units2_0 solid transparent;
+  border-bottom: @units2_0 solid transparent;
+  border-right: @units2_0 solid @selectedBgColor;
+  border-top: @units2_0 solid @selectedBgColor;
+
+  &:hover:not([data-disabled]) {
+    // -webkit-filter: drop-shadow(0px 0px @units0_4 @selectedHoverColor);
+    border-right: @units2_0 solid @selectedHoverColor;
+    border-top: @units2_0 solid @selectedHoverColor;
+  }
+  &:active:not([data-disabled]) {
+    margin-top: @units0_1;
+    margin-right: @units0_1;
+  }
+}
+
+.selectButtonIcon {
+  position: absolute;
+  width: @units1_7;
+  height: @units1_7;
+  margin-top: -@units1_7;
+}
+.artworkButton {
+  .clickable;
+  position: absolute;
+  z-index: 1000; // have to be more than z-index for .artworkBg
+  .slightlytransparent;
+
+  & .toolbutton,
+  &:focus .toolbutton {
+    color: @iconColor;
+    fill: @iconColor;
+    background-color: contrast(@iconColor, black, white);
+    .paddingSmall;
+  }
+  &:hover:not([data-disabled]) {
+    // -webkit-filter: drop-shadow(0px 0px @units0_2 @selectedHoverColor);
+    background-color: @selectedHoverColor;
+  }
+  &:active:not([data-disabled]) {
+    margin-top: @units0_1;
+    margin-right: @units0_1;
+    background-color: @selectedHoverColor;
+  }
+}
+
+.artworkSaveIcon,
+div:focus .artworkSaveIcon {
+  .artworkButton;
+  width: @units0_75;
+  height: @units0_75;
+  top: 0;
+  left: 0;
+}
+
+.rowitem.rowHeight2line > .selectButtonBg {
+  border-left: @units1_5 solid transparent;
+  border-bottom: @units1_5 solid transparent;
+  border-right: @units1_5 solid @selectedBgColorR;
+  border-top: @units1_5 solid @selectedBgColorR;
+
+  &:hover:not([data-disabled]) {
+    // -webkit-filter: drop-shadow(0px 0px @units0_3 @selectedHoverColor);
+    border-right: @units1_5 solid @selectedHoverColor;
+    border-top: @units1_5 solid @selectedHoverColor;
+  }
+}
+.rowitem.rowHeight2line > .selectButtonBg > .selectButtonIcon {
+  position: absolute;
+  width: @units1_5;
+  height: @units1_5;
+  margin-top: -@units1_5;
+}
+.rowitem:not(.rowHeight2line) > .selectButtonBg,
+.griditem.rowHeight1line > .selectButtonBg {
+  border: @units1_0 solid @selectedBgColorR;
+
+  &:hover:not([data-disabled]) {
+    // -webkit-filter: drop-shadow(0px 0px @units0_15 @selectedHoverColor);
+    border: @units1_0 solid @selectedHoverColor;
+  }
+}
+.rowitem:not(.rowHeight2line) > .selectButtonBg > .selectButtonIcon,
+.griditem.rowHeight1line > .selectButtonBg > .selectButtonIcon {
+  position: absolute;
+  width: @units1_5;
+  height: @units1_5;
+  margin-top: -@units0_9;
+  margin-left: -@units0_6;
+}
+
+.searchBox .toolbutton,
+.sysbutton .toolbutton {
+  padding: 0;
+}
+
+.artworkDeleteButton,
+div:focus .artworkDeleteButton {
+  .artworkButton;
+  top: 0;
+  right: 0;
+}

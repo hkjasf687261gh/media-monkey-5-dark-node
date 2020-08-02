@@ -1,0 +1,27 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.progressLine {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  top: -3px;
+  height: 2px;
+}
+
+.progressLine .backLine {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: @sliderColor;
+}
+
+.progressLine .frontLine {
+  position: absolute;
+  overflow: hidden;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  background-color: @sliderColorHighlight;
+}

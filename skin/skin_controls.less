@@ -1,0 +1,107 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+input,
+textarea {
+  .grindEdge;
+  background-color: @controlColor;
+  color: @textColor;
+  padding: @textVerticalPadding @textHorizontalPadding;
+  border: 1px solid @borderColor;
+}
+
+.focused {
+  box-shadow: none;
+}
+
+*:focus {
+  outline: none; // To get rid of the Chrome default orange rectangle
+  .focused;
+}
+
+div:focus {
+  box-shadow: none !important;
+}
+
+a {
+  color: inherit;
+}
+
+.controlBase {
+  background: @controlColor;
+}
+
+.controlDisabledSelected {
+  background: @disabledSelectedColor;
+}
+
+.controlSelected {
+  background: @selectedColor;
+}
+
+.controlHover {
+  background: @hoverBgColor;
+}
+
+.controlHoveredSelected {
+  background: darken(@selectedColor, 3%);
+}
+
+.hoverHightlight:hover {
+  .controlHover;
+}
+
+[contenteditable] {
+  cursor: text;
+}
+
+[contenteditable]:focus {
+  .focused;
+  overflow: visible;
+  border: 1px inset @borderColor;
+  padding: @textVerticalPadding @textHorizontalPadding;
+  background-color: @controlColor;
+  min-width: @units1_0;
+  display: inline-block; // needed here, otherwise cursor could disappear at the end of the text
+  margin-top: 0px;
+}
+
+.inlineEdit {
+  margin: 0px;
+  padding: 0px;
+}
+
+.inlineEdit input {
+  vertical-align: baseline;
+  min-width: 0px;
+  .stretchHeight; // to solve #15081
+}
+
+.scoreBar {
+  .grindEdge;
+  background-color: @highlightBgColor;
+}
+
+.controlInfo {
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: center;
+  font-style: italic;
+}
+
+.shadowedText {
+  text-shadow: 0px 0px @units1_0 @baseColor, 0px 0px @units0_8 @baseColor,
+    0px 0px @units0_5 @baseColor;
+}
+
+.largeShadowedText {
+  text-shadow: 0px 0px @units1_5 @baseColor, 0px 0px @units1_2 @baseColor,
+    0px 0px @units1_0 @baseColor, 0px 0px @units0_5 @baseColor;
+  font-size: @units2_0;
+}
+
+.veryLargeShadowedText {
+  text-shadow: 0px 0px @units1_2 @baseColor, 0px 0px @units2_0 @baseColor,
+    0px 0px @units1_5 @baseColor, 0px 0px @units1_5 @baseColor,
+    0px 0px @units1_0 @baseColor;
+  font-size: @units3_5;
+}

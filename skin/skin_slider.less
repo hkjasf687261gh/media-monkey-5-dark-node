@@ -1,0 +1,156 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+@sliderColor: fade(darken(average(@controlColor, @textColor), 20%), 60%);
+@sliderColorHighlight: @highlightColor;
+@thumbColor: @textColor;
+@thumbHoverColor: @warningColor;
+@thumbInWidth: round(@fontSize*0.43);
+@thumbInHeight: round(@fontSize*0.43);
+@thumbBorderSize: round(@fontSize*0.215);
+@seekbarSize: round(@fontSize*0.286);
+@thumbWidth: @thumbInWidth+2* @thumbBorderSize;
+@thumbHeight: @thumbInHeight+2* @thumbBorderSize;
+@tickSize: round(@fontSize*0.357);
+@tickThickness: round(@fontSize*0.072);
+
+.seekBarOuter {
+  position: relative;
+  width: 100%;
+  height: @thumbHeight;
+  margin-top: auto;
+  margin-bottom: auto;
+  z-index: 999999; // to be sure that seeking will work over layer
+}
+.seekBarOuter:focus {
+  .focused;
+}
+
+.seekBar {
+  position: absolute;
+  left: round(@thumbHeight / 2);
+  right: round(@thumbHeight / 2);
+  top: round((@thumbHeight - @seekbarSize)/2);
+  background-color: @sliderColor;
+  height: @seekbarSize;
+  border-radius: @seekbarSize;
+}
+
+.seekBarBefore {
+  .seekBar;
+  background-color: @sliderColorHighlight;
+  width: @thumbWidth;
+  z-index: 3;
+}
+
+.seekBarThumb {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: transparent;
+  width: @thumbInWidth;
+  height: @thumbInHeight;
+  border-radius: @thumbInHeight+ @thumbBorderSize;
+  border: @thumbBorderSize solid @thumbColor;
+  z-index: 999999;
+  &[data-disabled] {
+    opacity: 0;
+  }
+}
+.seekBarThumb:hover:not([data-disabled]),
+.seekBarThumb:active:not([data-disabled]),
+.seekBarThumbVert:hover:not([data-disabled]),
+.seekBarThumbVert:active:not([data-disabled]) {
+  border: @thumbBorderSize solid @thumbHoverColor;
+}
+
+.microPlayer .seekBarThumb {
+  transform: scale(0.5);
+}
+
+.ticksOuter {
+  position: absolute;
+  left: round(@thumbWidth / 2);
+  right: round(@thumbWidth / 2);
+  top: @tickSize;
+  bottom: @tickSize;
+  z-index: 10;
+}
+.ticksOuter .tick {
+  position: absolute;
+  width: @tickThickness;
+  height: @tickSize;
+  background-color: @sliderColor;
+  margin-right: 0 - floor(@tickThickness / 2);
+}
+.ticksOuter .tick.topLeft {
+  top: -@tickSize - @tickThickness - 1;
+}
+.ticksOuter .tick.bottomRight {
+  bottom: -@tickSize - @tickThickness - 1;
+}
+.ticksOuter .tick.center {
+  top: 0;
+  bottom: 0;
+  height: 2 * @tickSize;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.seekBarOuterVert {
+  position: relative;
+  height: 100%;
+  width: @thumbWidth;
+  margin-left: auto;
+  margin-right: auto;
+}
+.seekBarOuterVert:focus {
+  .focused;
+}
+
+.seekBarVert {
+  position: absolute;
+  top: round(@thumbHeight / 2);
+  bottom: round(@thumbHeight / 2);
+  left: round((@thumbWidth - @seekbarSize)/2);
+  background-color: @sliderColor;
+  width: @seekbarSize;
+  border-radius: @seekbarSize;
+}
+
+.seekBarThumbVert {
+  .seekBarThumb;
+}
+
+.seekBarBeforeVert {
+  .seekBarVert;
+  background-color: @sliderColorHighlight;
+  height: @thumbHeight;
+  z-index: 3;
+}
+.ticksOuterVert {
+  position: absolute;
+  top: round(@thumbHeight / 2);
+  bottom: round(@thumbHeight / 2);
+  left: -@tickSize;
+  right: -@tickSize;
+}
+.ticksOuterVert .tick {
+  position: absolute;
+  width: @tickSize;
+  height: @tickThickness;
+  background-color: @sliderColor;
+  margin-top: 0 - floor(@tickThickness / 2);
+}
+.ticksOuterVert .tick.topLeft {
+  left: 0;
+}
+.ticksOuterVert .tick.bottomRight {
+  right: 0;
+}
+.ticksOuterVert .tick.center {
+  left: 0;
+  right: 0;
+  width: 2 * @tickSize;
+  margin-right: auto;
+  margin-left: auto;
+}

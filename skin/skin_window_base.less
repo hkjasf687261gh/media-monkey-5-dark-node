@@ -1,0 +1,59 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+#windowcontent {
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0px;
+  cursor: default;
+  overflow: hidden; /* hide scrollbars */
+  padding: 0;
+  width: 100%;
+  height: 100%;
+
+  /* prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  background: @baseColor;
+  color: @textColor;
+  fill: @textColor;
+  font-size: @fontSize;
+}
+
+.textSelectable {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  cursor: auto;
+}
+
+p {
+  .textSelectable;
+}
+
+/* Skin selection */
+::selection {
+  background-color: @hoverColor;
+}
+::-moz-selection {
+  background-color: @hoverColor;
+}
+
+html {
+  overflow: hidden;
+}
+
+[data-control-class="MainTabs"] .tabsHeaderCaption {
+  min-width: 2em;
+}

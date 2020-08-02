@@ -1,0 +1,162 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.animTabHide {
+  -webkit-animation-name: hide;
+  -webkit-animation-duration: @animationTime;
+
+  -webkit-animation-timing-function: ease;
+  /* ease is the default */
+}
+.animTabShow {
+  -webkit-animation-name: show;
+  -webkit-animation-duration: @animationTime;
+
+  -webkit-animation-timing-function: ease;
+  /* ease is the default */
+}
+.tabs_container {
+}
+
+.tabs {
+  .flex;
+  .flex.column;
+  max-width: 100%;
+  overflow: visible;
+}
+.tabsHeaders {
+  .flex.static;
+  .flex;
+  .flex.row;
+  outline: none;
+  white-space: nowrap;
+  // Reset webkit defaults for <ul>
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+  overflow: visible;
+}
+
+.tabsHeader {
+  .flex.dynamicShrink;
+  .flex;
+  .flex.row;
+  overflow: hidden;
+  text-indent: 0px;
+  text-overflow: ellipsis;
+  min-height: 0px;
+  align-items: center;
+}
+.tabsHeader.fixedWidth {
+  flex: 0 1 auto;
+  width: round(@fontSize*9.0);
+}
+.tabsHeaderCaption {
+  .flex.dynamic;
+  display: block;
+  overflow: hidden;
+  text-indent: 0px;
+  text-overflow: ellipsis;
+  min-height: 0px;
+  margin-right: @units0_6;
+  margin-left: @units0_2;
+}
+.tabsHeaderCaption > .rating {
+  max-height: @units1_0;
+}
+
+.tabsHeaderIcon {
+  .flex.static;
+}
+.tabPanels {
+  .flex.static;
+  position: relative;
+}
+.tabPanel {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* Drag & Drop specific */
+
+.tabsHeader[data-dropeffect] {
+  transition: transform 0.4s !important;
+}
+.tabsHeader[data-dropafter] {
+  transform: translate(-2em, 0%);
+  z-index: 999;
+}
+.tabsHeader[data-dropbefore] {
+  transform: translate(2em, 0%);
+  z-index: 999;
+}
+// Skin specific
+.tabsHeader {
+  opacity: 0.6;
+  padding-left: @units0_8;
+  padding-right: @units0_8;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  transition: background-color @animationTime ease-out;
+  transition: opacity @animationTime;
+}
+.tabsHeader:hover,
+.tabsHeader:hover[data-selected] {
+  .controlHover;
+  opacity: 1;
+}
+.tabsHeader[data-selected] {
+  color: @highlightColor;
+  border-bottom: 1px solid @highlightColor;
+  transition: opacity @animationTime;
+  opacity: 1;
+  z-index: 200;
+}
+.tabsHeaderCloseButton {
+  .flex.static;
+  .closeButton;
+  margin-left: @units0_5;
+  margin-right: -@units0_5;
+  border-radius: 3px;
+}
+
+.tabsHeaderCloseButton[data-showOnHover] {
+  position: absolute;
+  right: 0px;
+  margin-right: @units0_15;
+  opacity: 0;
+  z-index: 5;
+
+  [data-selected] &:hover {
+    opacity: 1;
+  }
+}
+
+.switcher.tabs {
+  display: inline-block;
+}
+.switcher .tabsHeader {
+  border: 1px solid @highlightColor;
+  margin: 0;
+  padding-left: @units0_5;
+  padding-right: @units0_5;
+  padding-top: @units0_25;
+  padding-bottom: @units0_25;
+}
+
+.switcher .tabsHeader:first-child {
+  .grindEdge;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.switcher .tabsHeader:last-child {
+  .grindEdge;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.switcher.blockTitleMargin {
+  margin-top: @units2_0;
+}

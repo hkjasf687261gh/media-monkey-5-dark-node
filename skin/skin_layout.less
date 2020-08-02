@@ -1,0 +1,1095 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+@units0_05: round(@fontSize*0.05);
+@units0_1: round(@fontSize*0.1);
+@units0_125: round(@fontSize*0.125);
+@units0_15: round(@fontSize*0.15);
+@units0_2: round(@fontSize*0.2);
+@units0_25: round(@fontSize*0.25);
+@units0_3: round(@fontSize*0.3);
+@units0_4: round(@fontSize*0.4);
+@units0_5: round(@fontSize*0.5);
+@units0_6: round(@fontSize*0.6);
+@units0_7: round(@fontSize*0.7);
+@units0_75: round(@fontSize*0.75);
+@units0_8: round(@fontSize*0.8);
+@units0_9: round(@fontSize*0.9);
+@units1_0: @fontSize;
+@units1_1: round(@fontSize*1.1);
+@units1_2: round(@fontSize*1.2);
+@units1_3: round(@fontSize*1.3);
+@units1_4: round(@fontSize*1.4);
+@units1_5: round(@fontSize*1.5);
+@units1_6: round(@fontSize*1.6);
+@units1_7: round(@fontSize*1.7);
+@units1_8: round(@fontSize*1.8);
+@units1_9: round(@fontSize*1.9);
+@units2_0: round(@fontSize*2.0);
+@units2_1: round(@fontSize*2.1);
+@units2_2: round(@fontSize*2.2);
+@units2_3: round(@fontSize*2.3);
+@units2_4: round(@fontSize*2.4);
+@units2_5: round(@fontSize*2.5);
+@units2_6: round(@fontSize*2.6);
+@units2_7: round(@fontSize*2.7);
+@units2_8: round(@fontSize*2.8);
+@units2_9: round(@fontSize*2.9);
+@units3_0: round(@fontSize*3.0);
+@units3_5: round(@fontSize*3.5);
+@units4_0: round(@fontSize*4.0);
+@units5_0: round(@fontSize*5.0);
+@units6_0: round(@fontSize*6.0);
+@units7_0: round(@fontSize*7.0);
+@units8_0: round(@fontSize*8.0);
+@units9_0: round(@fontSize*9.0);
+@units10_0: round(@fontSize*10.0);
+@units12_0: round(@fontSize*12.0);
+@units16_0: round(@fontSize*16.0);
+
+@horizontalResizeSize: 5px;
+
+.relativeBase {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+  align-items: stretch;
+  align-content: stretch;
+}
+.flex.column {
+  flex-flow: column;
+}
+.flex.row {
+  flex-flow: row;
+}
+.flex.row_wrap {
+  flex-flow: row wrap;
+}
+.flex.right,
+.flex.bottom {
+  justify-content: flex-end;
+}
+.flex.left,
+.flex.top {
+  justify-content: flex-start;
+}
+.flexcenter {
+  justify-content: center;
+}
+.flex .center {
+  align-self: center;
+}
+
+.flex > .fill {
+  flex: 10 10 auto;
+  position: relative;
+  min-width: 0px; // needed for correct text stretching
+  min-height: 0px;
+}
+.flex > .dynamic {
+  flex: 1 1 auto;
+  position: relative;
+  min-width: 0px; // needed for correct text stretching
+  min-height: 0px;
+}
+
+.flex.sameSize > * {
+  flex: 1 1 auto;
+  position: relative;
+  min-width: 0px; // needed for correct text stretching
+  min-height: 0px;
+  flex-basis: 1px; // all same bases = same with
+}
+
+.flex > .dynamicShrink {
+  flex: 0 1 auto;
+  position: relative;
+  min-width: 0px; // needed for correct text stretching
+  min-height: 0px;
+}
+.flex > .static {
+  flex: 0 0 auto;
+  position: relative;
+}
+.flex > * {
+  flex: 0 0 auto;
+  position: relative;
+}
+.flex > .autoMinHeight {
+  min-height: auto;
+}
+.flex > .autoMinWidth {
+  min-width: auto;
+}
+.verticalBaseline {
+  align-items: baseline;
+  vertical-align: baseline;
+}
+.verticalCenter {
+  align-items: center;
+  vertical-align: middle;
+}
+.verticalTop {
+  vertical-align: top;
+}
+.verticalTextTop {
+  vertical-align: text-top;
+}
+.verticalTextBottom {
+  vertical-align: text-bottom;
+}
+.flex.row > .verticalCenter {
+  align-self: center;
+}
+.fill {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: 0;
+}
+.allinside {
+  max-width: 100%;
+  max-height: 100%;
+}
+.autosize {
+  width: auto;
+  height: auto;
+}
+.nonTransparent {
+  background-color: @baseColor;
+}
+.layer {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  .nonTransparent; // so that layer is not transparent (e.g. when zoom in a new view i.e. albums -> album)
+}
+.scrollable {
+  overflow: auto;
+}
+.stretchWidth {
+  width: 100%;
+}
+.stretchHeight {
+  height: 100%;
+}
+.hSeparator {
+  margin-bottom: @units1_5;
+}
+.hSeparatorLine {
+  margin-top: 10;
+  margin-bottom: 10;
+  margin-right: 10;
+  margin-left: 10;
+  opacity: 0.5;
+  .borderBottom;
+}
+tr.hSeparator > td {
+  padding-bottom: @units1_5;
+}
+
+.hSeparatorTiny {
+  margin-bottom: @units0_5;
+}
+tr.hSeparatorTiny > td {
+  padding-bottom: @units0_5;
+}
+.hSeparatorsTiny > * {
+  .hSeparatorTiny;
+}
+.vSeparator {
+  margin-right: @units1_0;
+}
+td.vSeparator {
+  padding-right: @units1_0;
+}
+.vSeparatorTiny {
+  margin-right: @units0_5;
+}
+td.vSeparatorTiny {
+  padding-right: @units0_5;
+}
+.vSeparatorsTiny > * {
+  .vSeparatorTiny;
+}
+.verticalPanel {
+  width: round(@fontSize*23.0);
+}
+.verticalPanelNarrow {
+  width: round(@fontSize*17.0);
+}
+.wideControl,
+.flex > .wideControl {
+  min-width: round(@fontSize*23.0);
+}
+.middleControl,
+.flex > .middleControl {
+  min-width: round(@fontSize*14.0);
+}
+.narrowControl,
+.flex > .narrowControl {
+  min-width: round(@fontSize*6.0);
+}
+.thinControl {
+  width: @units5_0;
+}
+.highControl,
+.flex > .highControl {
+  min-height: round(@fontSize*20.0);
+}
+.flex.hasSplitters > .onlyStaticVisible {
+  flex-grow: 1;
+}
+.flex.column.hasSplitters > .initialSize {
+  height: @units5_0;
+}
+.flex.row.hasSplitters > .initialSize {
+  width: @units5_0;
+}
+
+.nonGreedy {
+  display: inline-block;
+}
+.inline {
+  display: inline-block;
+}
+.inlineText {
+  display: inline;
+}
+.innerDlg {
+  display: block;
+  padding: 10px;
+}
+
+.dockedDialog {
+  .topmost;
+  opacity: 1;
+  z-index: 2147483647;
+}
+
+.dimmedBackground {
+  background-color: black;
+  opacity: 0.8;
+  z-index: 2147483647;
+}
+
+.dimmedBackground label {
+  color: white;
+}
+
+.dimmedWindow {
+  .layer;
+  .fill;
+  .dimmedBackground;
+  opacity: 0.5;
+}
+
+.grindEdge {
+  border-radius: @borderRadius;
+}
+
+// Border definitions
+.border {
+  border-color: @borderColor;
+  border-width: @borderWidth;
+  border-style: @borderStyle;
+}
+.noBorder {
+  border-width: 0 !important;
+}
+.borderTop {
+  border-color: @borderColor;
+  border-width: @borderWidth;
+  border-top-style: @borderStyle;
+}
+.borderBottom {
+  border-color: @borderColor;
+  border-width: @borderWidth;
+  border-bottom-style: @borderStyle;
+}
+
+// Padding definitions
+@padding: @units0_5;
+@paddingLarge: @units1_0;
+
+.padding {
+  padding: @padding;
+}
+.noLeftPadding {
+  padding-left: 0px;
+}
+.paddingSmall {
+  padding: @units0_15;
+}
+.paddingLarge {
+  padding: @paddingLarge;
+}
+.paddingTopLarge {
+  padding-top: @paddingLarge;
+}
+.paddingLeft {
+  padding-left: @padding;
+}
+.paddingLeftLarge {
+  padding-left: @paddingLarge;
+}
+.paddingTop {
+  padding-top: @padding;
+}
+.paddingRight {
+  padding-right: @padding;
+}
+.paddingSides {
+  .paddingLeft;
+  .paddingRight;
+}
+.paddingBottom {
+  padding-bottom: @padding;
+}
+.paddingBottomLarge {
+  padding-bottom: @paddingLarge;
+}
+.paddingColumn {
+  .paddingLeft;
+  .paddingRight;
+}
+.paddingRow {
+  .paddingTop;
+  .paddingBottom;
+}
+.paddingRowSmall {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.paddingRowTiny {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.paddingNoLeft {
+  .paddingRight;
+  .paddingTop;
+  .paddingBottom;
+}
+.paddingColumnSmall {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.innerDlg ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.left-indent-small {
+  margin-left: @units0_5;
+}
+
+.left-indent {
+  margin-left: 25px;
+}
+.left-indent2 {
+  margin-left: 50px;
+}
+.slightlytransparent {
+  opacity: 0.8;
+}
+.semitransparent {
+  opacity: 0.5;
+}
+.transparent {
+  opacity: 0;
+}
+
+// .dialog {
+// }
+
+label,
+input,
+textarea,
+table,
+td,
+tr,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: @white;
+  &[data-disabled] {
+    color: @disabledColor;
+  }
+}
+.alignright {
+  position: absolute;
+  right: 0px;
+}
+.alignbottom {
+  position: absolute;
+  bottom: 0px;
+}
+
+.fillHeight {
+  top: 0px;
+  bottom: 0px;
+}
+
+.fillWidth {
+  left: 0px;
+  right: 0px;
+}
+
+.noWrap {
+  white-space: nowrap;
+}
+label,
+h1,
+h2,
+h3,
+h4 {
+  .noWrap;
+  .labelLeftPadding;
+  .labelRightPadding;
+}
+.labelRightPadding {
+  padding-right: @units0_3;
+}
+.labelLeftPadding {
+  padding-left: @units0_3;
+}
+.noLeftPadding.labelLeftPadding {
+  padding-left: 0;
+}
+
+.box {
+  display: block;
+}
+.noStretch {
+  white-space: nowrap;
+}
+
+td.noStretch {
+  width: 1%;
+}
+.alignBottom {
+  vertical-align: bottom;
+}
+table {
+  width: 100%;
+}
+table.innerTable {
+  border-collapse: collapse;
+}
+table.innerTable td {
+  padding: 0px;
+}
+table.innerTableMultiLine {
+  border-collapse: collapse;
+}
+table.innerTableMultiLine td {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+table.innerTableMultiLine tr:first-child td {
+  padding-top: 0px;
+}
+table.innerTableMultiLine tr:last-child td {
+  padding-bottom: 0px;
+}
+
+.uiRow {
+  line-height: @rowHeight;
+  .verticalBaseline;
+}
+
+.uiRowCenter {
+  line-height: @rowHeight;
+  .verticalCenter;
+}
+
+.uiRows > * {
+  .uiRow;
+}
+
+.uiRow .button,
+.uiRowCenter .button {
+  .rowButton;
+}
+
+.uiRows .button {
+  .rowButton;
+}
+
+.clrWarning {
+  color: @warningColor;
+}
+
+svg .clrWarning,
+svg.clrWarning {
+  fill: @warningColor;
+}
+
+.clrInfo {
+  color: @infoColor;
+}
+
+svg .clrInfo,
+svg.clrInfo {
+  fill: @infoColor;
+}
+
+.clrError {
+  color: @errorColor;
+}
+
+svg .clrError,
+svg.clrError {
+  fill: @errorColor;
+}
+
+.cellBase,
+.bgColorBase {
+  background-color: @baseColor;
+}
+
+.cellWarning,
+.bgColorWarning {
+  background-color: @warningBgColor;
+}
+
+.cellError,
+.bgColorError {
+  background-color: @errorBgColor;
+}
+
+.cellSelected,
+.bgColorSelected {
+  background-color: @selectedColor;
+}
+
+.cellHighlight,
+.bgColorHighlight {
+  background-color: @highlightBgColor;
+}
+
+.cellDisabled,
+.bgColorDisabled {
+  background-color: @disabledBgColor;
+}
+
+.innerWindow {
+  position: fixed;
+  z-index: 2147483646;
+  overflow: hidden;
+  background: @baseColor;
+}
+hr.separator {
+  border-color: lighten(@controlColor, 10%);
+}
+.textCenter {
+  text-align: center;
+}
+.textRight {
+  text-align: right;
+}
+.textWrap {
+  white-space: normal !important;
+  padding-left: 0 !important;
+}
+.textEllipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.smallText {
+  font-size: @fontSizeSmaller;
+}
+.slightlyLargerText {
+  font-size: @fontSizeSlightlyLarger;
+}
+.largeText {
+  font-size: @fontSizeLarger;
+}
+.unimportantText {
+  .smallText;
+  opacity: 0.8;
+}
+.slopingText {
+  transform: rotate(-45deg);
+  transform-origin: center;
+  transform-style: preserve-3d;
+}
+.textOther {
+  font-style: italic;
+}
+.textHighlight {
+  color: @highlightColor;
+}
+.underscoredText {
+  text-decoration: underline;
+}
+.sectionHeader {
+  font-weight: bold;
+}
+.topmost {
+  position: absolute;
+  z-index: 2147483647;
+}
+.behind {
+  z-index: -1;
+}
+.inFront {
+  position: absolute;
+  z-index: 1;
+}
+
+.globalResizeVertical {
+  cursor: ns-resize;
+}
+.resizeVertical {
+  .globalResizeVertical;
+  height: 5px;
+  bottom: -3px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  overflow: visible;
+}
+.resizeVertical.splitterOpposite {
+  bottom: auto;
+  top: -3px;
+}
+
+.globalResizeHorizontal {
+  cursor: ew-resize;
+}
+.resizeHorizontal {
+  .globalResizeHorizontal;
+  width: @horizontalResizeSize;
+  right: -3px;
+  top: 0px;
+  bottom: 0px;
+  position: absolute;
+  overflow: visible;
+  z-index: 2;
+}
+.resizeHorizontal.splitterOpposite {
+  right: auto;
+  left: -3px;
+}
+
+.hoverHeader {
+  position: absolute;
+  top: @units0_15;
+  right: @units0_15;
+  width: @units1_1;
+  height: @units1_1;
+  opacity: 0.6;
+  fill: @textColor;
+  z-index: 999;
+}
+
+.splitter {
+  align-self: stretch;
+  flex: 0 0 @defaultMargin;
+  z-index: 999999;
+}
+
+.flex.column > .splitter {
+  .globalResizeVertical;
+  min-height: @defaultMargin;
+  max-height: @defaultMargin;
+}
+
+.flex.row > .splitter {
+  .globalResizeHorizontal;
+  min-width: @defaultMargin;
+  max-width: @defaultMargin;
+}
+
+// Margins definitions
+@marginLarge: 2 * @defaultMargin;
+@marginSmall: @defaultMargin / 3;
+.margins {
+  margin: @defaultMargin;
+}
+.marginsColumn {
+  margin-top: @defaultMargin;
+  margin-bottom: @defaultMargin;
+}
+.marginsRow {
+  margin-left: @defaultMargin;
+  margin-right: @defaultMargin;
+}
+.marginTop {
+  margin-top: @defaultMargin;
+}
+.marginTopSmall {
+  margin-top: @marginSmall;
+}
+.marginTopLarge {
+  margin-top: @marginLarge;
+}
+.marginBottomLarge {
+  margin-bottom: @marginLarge;
+}
+.marginLarge {
+  margin: @marginLarge;
+}
+.marginBottom {
+  margin-bottom: @defaultMargin;
+}
+.marginLeftSmall {
+  margin-left: round(@defaultMargin*0.4); //0.2em;
+}
+.autoMargin {
+  margin: auto;
+}
+.noMargin {
+  margin: 0px;
+}
+
+.noOverflow {
+  overflow: hidden;
+}
+.noresize {
+  resize: none;
+  overflow-y: auto;
+}
+.hoverHighlight {
+  &:hover {
+    color: @highlightColor;
+    fill: @highlightColor;
+  }
+}
+.clickable {
+  &:not([data-disabled]) {
+    cursor: pointer;
+    .hoverHighlight;
+  }
+}
+.clickableLabel {
+  .clickable;
+}
+
+* [data-keyfocused]:not {
+  outline: none !important;
+  box-shadow: none;
+}
+
+* [data-keyfocused] {
+  outline: @textColor dashed 1px !important;
+  outline-offset: -2px;
+  box-shadow: none;
+}
+
+.highlightColor {
+  color: @highlightColor;
+  background-color: @highlightBgColor;
+}
+
+.textColor {
+  color: @textColor;
+  background-color: @baseColor;
+}
+
+svg .textColor,
+svg.textColor {
+  fill: @textColor;
+  stroke: @textColor;
+}
+
+.fontLineSize,
+.flex > .fontLineSize {
+  min-height: @fontLineSize;
+  max-height: @fontLineSize;
+  height: @fontLineSize;
+}
+
+@middleImageSize: round(@fontSize*8.0);
+@middleImageSizeWithPadding: @middleImageSize + 2 * @padding;
+@biggerImageSize: round(@fontSize*16.0);
+@biggerImageSizeWithPadding: @biggerImageSize + 2 * @padding;
+
+.middleImageSize,
+.flex > .middleImageSize {
+  max-width: @middleImageSize;
+  max-height: @middleImageSize;
+}
+
+.middleImageSizeExact {
+  max-width: @middleImageSize;
+  max-height: @middleImageSize;
+  width: @middleImageSize;
+  height: @middleImageSize;
+}
+
+.biggerImageSize,
+.flex > biggerImageSize {
+  max-width: 1.5 * @biggerImageSize;
+  max-height: @biggerImageSize;
+}
+
+.biggerImageSizeExact {
+  max-width: @biggerImageSize;
+  max-height: @biggerImageSize;
+  width: @biggerImageSize;
+  height: @biggerImageSize;
+}
+
+@headerFadeoutHeight: @units2_7;
+
+.middleHeaderHeight {
+  height: @middleImageSizeWithPadding + @headerFadeoutHeight; // plus text fadeout height
+}
+
+.biggerHeaderHeight {
+  height: @biggerImageSizeWithPadding + @headerFadeoutHeight; // plus text fadeout height
+}
+
+[data-contentType="visualization"] {
+  z-index: 20; // above tabs in art window
+}
+
+.titleMargin {
+  -webkit-margin-before: @defaultMargin;
+  -webkit-margin-after: @defaultMargin;
+}
+
+.blockTitleMargin {
+  margin-top: @units2_0;
+  margin-bottom: @units0_5;
+}
+
+.blockTitleMarginFirst {
+  margin-top: @units1_0;
+  margin-bottom: @units0_5;
+}
+
+h2 {
+  .titleMargin;
+}
+
+.sizeLabel {
+  position: absolute;
+  &.left {
+    left: 0;
+  }
+  &:not(.left) {
+    right: 0;
+  }
+  bottom: 0.5em;
+  color: @textColor;
+  background-color: contrast(@textColor, black, white);
+  opacity: 0.75;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.9em;
+  margin-right: 0.1em;
+  line-height: initial;
+  font-size: @units0_9;
+}
+
+.ignoreMouse {
+  pointer-events: none;
+}
+
+.noBorder {
+  border: none;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
+.centerChild {
+  text-align: center;
+
+  &:before {
+    content: "";
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.centerStretchImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.coverImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; // by default used stretched style for cover images, #14555
+  object-position: center center;
+  &.bottom {
+    object-position: bottom center;
+  }
+  &.top {
+    object-position: top center;
+  }
+}
+
+.initialFontSize {
+  font-size: initial;
+}
+
+.baseBackgroundBitTransparent {
+  background-color: fadeout(@baseColor, 18%);
+}
+
+.bottomFadeout {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: @headerFadeoutHeight;
+  background: -moz-linear-gradient(
+    top,
+    fadeout(@baseColor, 100%) 0,
+    @baseColor 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, fadeout(@baseColor, 100%)),
+    color-stop(100%, @baseColor)
+  );
+  background: -webkit-linear-gradient(
+    top,
+    fadeout(@baseColor, 100%) 0,
+    @baseColor 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    fadeout(@baseColor, 100%) 0,
+    @baseColor 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    fadeout(@baseColor, 100%) 0,
+    @baseColor 100%
+  );
+  background: linear-gradient(
+    top,
+    fadeout(@baseColor, 100%) 0,
+    @baseColor 100%
+  );
+  z-index: 1;
+}
+
+fieldset {
+  .border;
+}
+
+// Hide scrollbar, unless hovered
+.hoverScrollbar:not(:hover)::-webkit-scrollbar,
+.hoverScrollbar:not(:hover)::-webkit-scrollbar-thumb {
+  visibility: hidden;
+}
+
+.hotlink {
+  color: @hotlinkColor;
+}
+
+.hotlink:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.transparentBackground {
+  background-color: @transparentBackground;
+}
+
+.dropeffect {
+  outline: @highlightColor dashed @borderWidth;
+  outline-offset: -@borderWidth;
+}
+
+.avoid-clicks {
+  pointer-events: none;
+}
+
+.lookupField {
+  color: @highlightColor; //@lookupColor;
+}
+
+.lookupFieldInConflict {
+  .marginLeftSmall;
+  color: @errorColor;
+  font-weight: bold;
+}
+
+.lookupUnknownGenres {
+  color: @disabledColor;
+}
+
+.lookupFieldCover {
+  height: 0.5em;
+  width: 0.5em;
+  background-color: @highlightColor;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+}
+
+.lookupField[data-disabled],
+.lookupFieldInConflict[data-disabled] {
+  color: gray !important;
+}
+
+.longTouch {
+  position: absolute;
+  width: @units5_0;
+  height: @units5_0;
+  z-index: 9999999;
+}
+
+.longTouch svg {
+  transform: rotate(-90deg);
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -206px;
+  margin-left: -206px;
+  cursor: pointer;
+  background-color: white;
+  padding: 50px;
+}
+
+.longTouch svg > circle#progress {
+  stroke-dasharray: 0, 1000;
+  stroke: #171f30;
+  stroke-width: 0;
+  transition: 0s ease-out all;
+  opacity: 0;
+  transform-origin: 50% 50%;
+  transform: rotate(-90deg);
+}
+
+.longTouch svg > circle#progress.active {
+  stroke-dasharray: 885, 1000; /* full circle */
+  stroke-width: 20;
+  opacity: 0.5;
+  transform-origin: 50% 50%;
+  transform: rotate(180deg);
+  transition: 1s ease-in-out all;
+}
+
+.longTouch svg > circle#progress.active.launch {
+  stroke: #c12b3a;
+  fill: #ed5565;
+  transition: 0s ease-out all;
+}

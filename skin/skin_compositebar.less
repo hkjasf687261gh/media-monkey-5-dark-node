@@ -1,0 +1,52 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.graphContainer[data-grow] {
+  flex-grow: 1;
+}
+.compositeBar {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  height: @units1_2;
+}
+.compositeBar .graphBar {
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  // font-size: @units1_0;
+  color: white;
+  text-align: center;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+}
+.compositeBar .transition {
+  transition: width @animationTime, left @animationTime;
+  transition-timing-function: ease;
+}
+
+@clrGraphBar1: #d87131;
+.compositeBar .graphBar1 {
+  background-color: @clrGraphBar1;
+  border: solid darken(@clrGraphBar1, 8%) 1px;
+}
+@clrGraphBar2: #abb521;
+.compositeBar .graphBar2 {
+  background-color: @clrGraphBar2;
+  border: solid darken(@clrGraphBar2, 8%) 1px;
+}
+@clrGraphBar3: #865a89;
+.compositeBar .graphBar3 {
+  background-color: @clrGraphBar3;
+  border: solid darken(@clrGraphBar3, 8%) 1px;
+}
+@clrGraphBar4: #807a71;
+.compositeBar .graphBar4 {
+  background-color: @clrGraphBar4;
+  border: solid darken(@clrGraphBar4, 8%) 1px;
+}
+@clrGraphBar5: #679858;
+.compositeBar .graphBar5 {
+  background-color: @clrGraphBar5;
+  border: solid darken(@clrGraphBar5, 8%) 1px;
+}

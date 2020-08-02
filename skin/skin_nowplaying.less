@@ -1,0 +1,26 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+@minsquarewidth: 22em;
+@minwidth: 20em;
+
+.nowPlayingContainer {
+  min-width: @minsquarewidth;
+}
+
+.nowPlayingCurrentTrackPanel .imageSquare {
+  min-width: @minsquarewidth;
+  min-height: @minwidth;
+}
+
+.nowPlayingContainer .artwork {
+  min-width: @minwidth;
+  min-height: @minwidth;
+}
+
+.nowPlayingContainer .artwork[data-id="noaa"] {
+  max-height: @minwidth;
+}
+
+.nowPlayingContainer .multiline {
+  white-space: normal;
+}

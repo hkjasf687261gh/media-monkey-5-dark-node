@@ -1,0 +1,116 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.tabs[data-mainTabs] .tabsHeader {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#innerBody {
+  .marginsRow;
+  .marginBottom;
+}
+
+[data-id="mainview"] {
+  background-color: @baseColor;
+}
+
+.winborder {
+  position: absolute;
+  left: @windowBorderSize;
+  top: @windowBorderSize;
+  right: @windowBorderSize;
+  bottom: @windowBorderSize;
+}
+
+.winborder-fullWindowVideo {
+  left: @windowBorderSize;
+  right: @windowBorderSize;
+  bottom: @windowBorderSize;
+}
+
+body[data-maximized] .winborder-fullWindowVideo {
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.winborder-share {
+  position: absolute;
+  background-color: @windowBorderColor;
+}
+
+.winborder-share-lr {
+  top: 0px;
+  bottom: 0px;
+  width: @windowBorderSize;
+}
+
+.winborder-share-ub {
+  left: 0px;
+  right: 0px;
+  height: @windowBorderSize;
+}
+
+.winborder-left {
+  .winborder-share;
+  .winborder-share-lr;
+  left: 0px;
+}
+
+.winborder-right {
+  .winborder-share;
+  .winborder-share-lr;
+  right: 0px;
+}
+
+.winborder-top {
+  .winborder-share;
+  .winborder-share-ub;
+  top: 0px;
+}
+
+.winborder-bottom {
+  .winborder-share;
+  .winborder-share-ub;
+  bottom: 0px;
+}
+
+.windowheader {
+  height: @windowHeaderHeight;
+  align-items: center;
+}
+
+.windowheader .buttonsContainer {
+  // position: absolute; // to resolve #15520
+  margin-right: @spacingXS;
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 10px;
+}
+
+.windowHeaderOffset {
+  top: @windowHeaderHeight !important;
+}
+
+.windowContentOffset_body {
+  position: absolute;
+  right: @windowBorderSize * 2;
+  bottom: @windowBorderSize * 2;
+}
+
+.windowHeaderOffset_webApp {
+  position: relative;
+  bottom: @windowHeaderHeight;
+}
+
+.sysbutton {
+  fill: @textColor;
+  width: 1em;
+  height: 1em;
+  align-self: center;
+  padding: @spacingXXS;
+  border-radius: @spacingXXS;
+}
+.sysbutton:hover {
+  background-color: @hoverBgColor;
+}

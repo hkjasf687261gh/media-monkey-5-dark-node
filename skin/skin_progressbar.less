@@ -1,0 +1,50 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.progressContainer[data-grow] {
+  flex-grow: 1;
+}
+
+@progressBarBorderSize: 1px;
+@progressBarColor: @highlightBgColor;
+@progressBarOpacity: 0.3;
+@progressBarHeight: @lvItemHeight - 2 * @progressBarBorderSize;
+
+.progressBar {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  height: @progressBarHeight;
+  line-height: @progressBarHeight;
+  border: solid @borderColor @progressBarBorderSize;
+}
+.progressBar .client {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+.progressbar .label {
+  font-size: @fontSizeSmaller;
+  color: @textColor;
+  .verticalCenter;
+  .textEllipsis;
+  padding-left: @padding;
+  padding-right: @padding;
+  z-index: 1;
+}
+.progressBar .progress {
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: @fontSizeSmaller;
+  color: @textColor;
+  top: 0px;
+  left: 0px;
+  background-color: @progressBarColor;
+  height: 100%;
+  opacity: @progressBarOpacity;
+}
+.progressBar .transition {
+  transition: width 0.1s ease;
+}

@@ -1,0 +1,615 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.listview {
+  background-color: @controlColor;
+  color: @textColor;
+}
+
+.transparentBackground .listview {
+  background-color: transparent;
+}
+
+.listview .lassoLayer {
+  position: absolute;
+  border: 1px dashed navy;
+  opacity: 0.5;
+  background-color: transparent;
+  z-index: 99999999;
+  transform: none;
+}
+
+.listview.viewControl {
+  border-style: none;
+  border-width: 0px;
+  background-color: initial;
+}
+
+.listview.showInline {
+  border-style: none;
+  border-width: 0px;
+  background-color: initial;
+}
+
+/*.listview .scrollingCanvas { // Just an example of a possible listview background
+	background-color: Blue; 	
+	background: linear-gradient(to right, #00ff00 0%,#ff0000 100%);
+}*/
+
+.listview .groupHeader {
+  height: 3 * @fontLineSize;
+  font-size: @units3_0;
+  padding: @units0_25;
+}
+
+/* Listview Group Header that is drawn above/left of a group that starts off-screen*/
+.listview .groupHeader[data-partial] {
+  /*	-webkit-filter: opacity(0.5);	*/
+}
+
+.rowitem {
+  overflow: hidden;
+}
+
+.rowitem[data-deleting] {
+  transition: all 0.3s;
+}
+
+.rowitem[data-deleting][data-run] {
+  transform: translate(105%, 0);
+}
+
+.rowitem[data-moving] {
+  transition: all 0.3s ease 0.3s;
+}
+
+.rowitem[data-dropeffect] {
+  transition: transform 0.2s;
+}
+
+.rowitem[data-dropafter] {
+  transform: translate(0%, -50%);
+  z-index: 999;
+  .borderBottom;
+}
+
+.rowitem[data-dropbefore] {
+  transform: translate(0%, 50%);
+  z-index: 999;
+  .borderTop;
+}
+
+.transparentList .lvCanvas {
+  background-color: transparent !important;
+}
+
+.groupSepHeader {
+  min-height: @fontLineSize + @units0_2;
+  padding-left: @units0_4;
+  font-weight: bold;
+}
+
+div:focus .lvItem[data-selected] {
+  .controlSelected;
+}
+
+@lvItemHeight: @fontLineSize + @units0_3;
+@lvItemPadding: @units0_15;
+
+.lvItem {
+  height: @lvItemHeight;
+  line-height: @lvItemHeight;
+  padding: @lvItemPadding;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &[data-hover]:not([data-disabled]) {
+    .controlHover;
+  }
+
+  &[data-selected] {
+    .controlDisabledSelected;
+  }
+
+  &[data-dropeffect] {
+    transition: transform 0.2s;
+  }
+
+  &[data-selected][data-hover]:not([data-disabled]) {
+    .controlHoveredSelected;
+  }
+
+  &[data-dropbefore] {
+    transform: translate(0%, 25%);
+    z-index: 999;
+    .borderTop;
+  }
+
+  &[data-dropafter] {
+    transform: translate(0%, -25%);
+    z-index: 999;
+    .borderBottom;
+  }
+  &.gridrow {
+    /* padding inculded in cells, not needed for row */
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.lvItem.multiline {
+  white-space: normal;
+  line-height: normal;
+  height: auto;
+}
+
+.lvItem[data-icon] span {
+  margin-left: @units0_2;
+  padding-right: @units0_3;
+  width: @units1_0;
+  height: @units1_0;
+  fill: @textColor;
+}
+.lvItem[data-disabled] {
+  fill: @disabledColor;
+  color: @disabledColor;
+}
+
+// special rule used for animated displaying - so could animate width to full size on hover
+.lvItem[data-hover]:not([data-disabled]) .lvHeaderIcon {
+  width: @units1_0;
+}
+
+.listview .collapseRow {
+  font-size: @units0_7;
+  padding-left: @units0_3;
+}
+
+.lvHeaderItem {
+  height: @lvItemHeight;
+  line-height: @lvItemHeight;
+  padding: @lvItemPadding;
+  background-color: @headerColor;
+  border-color: @borderColor;
+  border-width: @borderWidth;
+  border-style: outset;
+  .verticalCenter;
+  overflow: visible;
+
+  .transparentBackground & {
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+.lvHeaderFillRest {
+  background-color: @headerColor;
+}
+
+.lvHeaderItemContentRight {
+  .flex.dynamic;
+  .textEllipsis;
+}
+
+.lvHeaderItemContent {
+  .lvHeaderItemContentRight;
+  flex: 0 1 auto;
+}
+
+.lvHeaderItemResize {
+  .resizeHorizontal;
+}
+
+.lvHeaderSingleItem {
+  .lvHeaderItem;
+  height: inherit;
+  text-align: center;
+}
+
+.lvColumnItem {
+  overflow: hidden;
+  border-color: transparent;
+  border-width: @borderWidth;
+  border-style: solid;
+  padding-left: @units0_15;
+  padding-right: @units0_15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lvColumnItem[data-right-aligned] {
+  margin-right: @horizontalResizeSize;
+}
+
+.lvColumnItem[highlighted] {
+  background-color: @warningBgColor;
+}
+
+.itemNowPlaying,
+.itemNowPlaying label {
+  font-weight: bold;
+  color: @accentColor !important; // #15860
+  fill: @accentColor !important; // #15860
+}
+
+.itemInaccessible,
+.itemInaccessible label,
+div:focus .lvItem.itemInaccessible[data-selected],
+div:focus .lvItem.itemInaccessible[data-selected] label {
+  color: @disabledColor;
+}
+
+.griditem .unknownAA {
+  fill: @warningBgColor;
+}
+
+.lvHeaderItem[data-dropbefore]:not([data-dragging]) {
+  transition: transform 0.2s;
+  transform: translateX(10px);
+  z-index: 999;
+}
+.lvHeaderItem[data-dropafter]:not([data-dragging]) {
+  transition: transform 0.2s;
+  transform: translateX(-10px);
+  z-index: 999;
+}
+.lvHeaderItem[data-dragging] {
+  opacity: 0.5;
+}
+
+.lvHeaderSort {
+  fill: @textColor;
+  width: 0;
+  height: @units1_0;
+  margin-right: -2px;
+}
+
+.sortAsc {
+  width: @units1_0;
+  transform: rotate(180deg);
+}
+
+.sortDesc {
+  width: @units1_0;
+}
+
+.lvHeaderItem[data-sortAsc] > .lvHeaderSort {
+  .sortAsc;
+}
+.lvHeaderItem[data-sortDesc] > .lvHeaderSort {
+  .sortDesc;
+}
+
+.lvHeaderSort[data-sortAsc] {
+  .sortAsc;
+}
+.lvHeaderSort[data-sortDesc] {
+  .sortDesc;
+}
+
+.lvHeaderItem.lvSimpleHeader {
+  flex: 10 0 auto;
+  border: 0;
+  padding-left: @units0_3;
+}
+
+.lvHeaderItem.lvSimpleHeaderRightAligned {
+  justify-content: flex-end;
+  padding-right: @units0_5;
+}
+
+.lvHeaderSortLabel {
+  fill: @textColor;
+  font-size: 70%;
+  width: 0;
+  height: @fontLineSize - @units0_2;
+  margin-right: -@units0_15;
+  margin-top: -@units0_15;
+}
+
+.lvHeaderItem[data-sort-label] > .lvHeaderSortLabel {
+  width: auto;
+}
+
+.rowHeight1line {
+  height: @lvItemHeight !important;
+  line-height: @lvItemHeight !important;
+}
+
+.rowHeight2line {
+  height: 2 * (@lvItemHeight) !important;
+  line-height: @lvItemHeight !important;
+}
+
+// attribtue popup
+@popupBgColor: mix(@highlightBgColor, @baseColor, 20%);
+@popupColor: contrast(@popupBgColor, black, white);
+.attributePopup {
+  background-color: @popupBgColor;
+  color: @popupColor;
+  fill: @popupColor; // for buttons on popup
+  & .hotlink:not(:hover) {
+    color: @popupColor;
+  }
+}
+.attributePopup .toolbutton-background {
+  fill: @iconColor; // for buttons on images
+}
+.popupIndicator {
+  fill: @popupBgColor;
+}
+
+// Image items
+@gridItemMargin: 0px;
+@gridItemSize: round(@fontSize*10.0* @gridItemSizeKoef);
+@imageSquareSize: @gridItemSize - @gridItemSizeKoef* @units1_0 - 2 *
+  @gridItemMargin;
+@gridItemPadding: @gridItemSizeKoef* @units0_2;
+@gridItemHeight: round(
+  @gridItemSize + 1.8 * @fontLineSize
+); // ordinary font size + 0.8x smaller font size for second line
+@gridItemHeight1Line: round(
+  @gridItemSize + 1 * @fontLineSize
+); // for 1 line only
+
+@artworkListItemSize: round(@fontSize*10.0* @artworkListItemSizeKoef);
+@artworkListItemHeight: round(@artworkListItemSize + 1.8 * @fontLineSize);
+
+.griditem[data-hover],
+.gridItemSquare[data-hover] {
+  background-color: @hoverBgColor;
+}
+
+.griditem .gridItemInner {
+  margin: @gridItemMargin;
+}
+
+.lvItem.griditem.imageItem {
+  padding-left: @gridItemPadding;
+  padding-right: @gridItemPadding;
+  padding-top: @gridItemPadding;
+
+  & span {
+    line-height: initial;
+  }
+}
+
+.griditem .imageSquare {
+  position: absolute;
+  top: @gridItemPadding;
+  left: @gridItemSizeKoef* @units0_5 + @gridItemPadding; // must add lvItem padding
+  height: @imageSquareSize;
+  width: @imageSquareSize;
+  border-width: 0px;
+}
+
+.imageSquare .artworkBg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 100;
+}
+
+.iconLarge img {
+  .ignoreMouse;
+}
+
+.griditem .imageInfo {
+  position: absolute;
+  top: 2 * @gridItemPadding + @imageSquareSize;
+  width: @imageSquareSize;
+  left: @gridItemSizeKoef* @units0_5 + @gridItemPadding; // must add lvItem padding
+}
+
+.griditem[data-selected],
+.gridItemSquare[data-selected] {
+  background-color: lighten(@selectedColor, 5%);
+}
+
+div:focus .griditem[data-selected],
+div:focus .gridItemSquare[data-selected] {
+  .controlSelected;
+}
+
+.griditem[data-hover],
+.gridItemSquare[data-hover] {
+  overflow: visible;
+  z-index: 9999;
+}
+
+.griditem[data-deleting] {
+  transition: all 0.6s;
+}
+
+.griditem[data-deleting][data-run] {
+  opacity: 0;
+  transform: rotate(360deg) scale(0);
+}
+
+.griditem[data-moving] {
+  transition: top 0.6s, left 0.6s;
+}
+
+.griditem[data-dropeffect] {
+  transition: transform 0.2s;
+}
+
+.griditem[data-dropafter] {
+  transform: translate(0%, -50%);
+  z-index: 999;
+  .borderBottom;
+}
+
+.griditem[data-dropbefore] {
+  transform: translate(0%, 50%);
+  z-index: 999;
+  .borderTop;
+}
+
+.griditemHeight,
+.flex > .griditemHeight {
+  height: @gridItemSize;
+  max-height: @gridItemSize;
+  min-height: @gridItemSize;
+}
+
+.griditemWidth,
+.flex > .griditemWidth {
+  width: @gridItemSize;
+  max-width: @gridItemSize;
+  min-width: @gridItemSize;
+}
+
+.gridItemSquare {
+  .griditemHeight;
+  .griditemWidth;
+}
+
+.artworkListItem .gridItemSquare {
+  height: @artworkListItemSize;
+  max-height: @artworkListItemSize;
+  min-height: @artworkListItemSize;
+  width: @artworkListItemSize;
+  max-width: @artworkListItemSize;
+  min-width: @artworkListItemSize;
+}
+
+.griditemHeight.artworkListItem {
+  height: @artworkListItemSize;
+  max-height: @artworkListItemSize;
+  min-height: @artworkListItemSize;
+}
+
+.griditemHeightWithText,
+.flex > .griditemHeightWithText {
+  height: @gridItemHeight;
+  max-height: @gridItemHeight;
+  min-height: @gridItemHeight;
+}
+
+.griditemHeightWithScrollbar,
+.flex > .griditemHeightWithScrollbar {
+  height: @gridItemHeight + @scrollbarSize;
+  max-height: @gridItemHeight + @scrollbarSize;
+  min-height: @gridItemHeight + @scrollbarSize;
+}
+
+.imageItem:not(.smallItem):not(.gridItemSquare) {
+  .griditemHeightWithText;
+  .griditemWidth;
+}
+
+.imageItem:not(.smallItem):not(.twoLines):not(.gridItemSquare) {
+  height: @gridItemHeight1Line;
+  max-height: @gridItemHeight1Line;
+  min-height: @gridItemHeight1Line;
+}
+
+// for smaller version of image grid
+@gridItemSizeSmall: round(@fontSize*5.5);
+@gridItemHeightSmall: round(@gridItemSizeSmall + 1 * @fontLineSize);
+
+.gridViewSmallHeight {
+  min-height: round(@gridItemHeightSmall);
+}
+
+.gridViewSmallOneRowHeight {
+  min-height: round(@gridItemHeightSmall + @fontLineSize);
+}
+
+.imageItem.smallItem {
+  width: @gridItemSizeSmall;
+  max-width: @gridItemSizeSmall;
+  min-width: @gridItemSizeSmall;
+  height: @gridItemHeightSmall;
+  max-height: @gridItemHeightSmall;
+  min-height: @gridItemHeightSmall;
+  font-size: @fontSizeSmaller;
+}
+
+.griditem.smallItem .imageSquare {
+  top: @units0_15;
+  left: @units0_5;
+  height: @units5_0 - 2 * @gridItemMargin;
+  width: @units5_0 - 2 * @gridItemMargin;
+}
+
+.griditem.smallItem .imageSquare .padding {
+  padding: @units0_25;
+}
+
+.griditem.smallItem .imageInfo {
+  top: @gridItemSizeSmall + @units0_2 - 2 * @gridItemMargin;
+  width: @gridItemSizeSmall - 2 * @gridItemMargin;
+  left: @units0_25;
+  height: @units1_0;
+}
+
+.visibleOnHover {
+  display: inline-block;
+  opacity: 0 !important;
+  width: 0px;
+}
+
+.lvItem[data-hover]:not([data-disabled]) .visibleOnHover {
+  opacity: 1 !important;
+  transition: width 0s, opacity @animationTime @defaultEasing;
+  transition-delay: @animationTime;
+}
+
+.lvInlineIcon {
+  // for icons in lv line
+  .inline;
+  .icon;
+  padding: @lvItemPadding;
+  & .toolbutton {
+    padding: 0; // padding already included in the parent, remove, it would move button unwanted way
+    width: inherit; // inherit size from the parent, not from toolbutton class
+    height: inherit;
+  }
+}
+
+.lvItem:not([data-selected]) .showWhenItemSelected {
+  display: none !important;
+}
+
+@transitionColor: lighten(@baseColor, 50%);
+
+.lvItem[highlightFocused] {
+  background-color: @transitionColor;
+}
+
+.lvItem[highlightFocusedFadeOut] {
+  transition: background-color 0.5s linear;
+  background-color: @controlColor;
+}
+
+.showWhenSelectionMode {
+  display: none;
+}
+
+.listview[data-selection-mode] .showWhenSelectionMode {
+  display: block;
+}
+
+.listview.showInline.canScrollHoriz,
+.listview.showInline.canScrollHoriz .lvBody,
+.listview.showInline.canScrollHoriz .lvFill,
+.listview.showInline.canScrollHoriz .lvCanvas {
+  display: inline-block; // To properly display horizontal scrolling listviews that are a part of a Scroller.
+}
+
+.listview[data-dragging] {
+  opacity: 0.5;
+}
+.listview[data-dropbefore]:not([data-dragging]) {
+  transition: transform 0.2s;
+  transform: translateX(10px);
+  z-index: 999;
+}
+.listview[data-dropafter]:not([data-dragging]) {
+  transition: transform 0.2s;
+  transform: translateX(-10px);
+  z-index: 999;
+}
+
+.lvItem[data-dropTarget] {
+  .controlSelected;
+}

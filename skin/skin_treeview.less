@@ -1,0 +1,26 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.icnExpand {
+  .icon;
+}
+
+.treeRow > * {
+  .verticalCenter;
+}
+
+.treeRow {
+  text-overflow: clip;
+  padding: @units0_4;
+}
+
+.treeRow[data-openInNewTab] {
+  cursor: pointer;
+}
+
+@treeLevelIndent: @fontLineSize;
+.treeLevelIndent,
+.flex > .treeLevelIndent {
+  min-width: @treeLevelIndent;
+  max-width: @treeLevelIndent;
+  width: @treeLevelIndent;
+}

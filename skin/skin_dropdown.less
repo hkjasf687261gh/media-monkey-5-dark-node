@@ -1,0 +1,118 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+@es-select-width: @units1_5;
+
+.editable-select {
+  display: flex;
+  overflow: hidden;
+  align-items: stretch;
+  align-content: stretch;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  border: 0;
+  height: auto;
+  width: auto;
+}
+
+[data-editing] .editable-select {
+  height: 100%;
+  width: 100%;
+}
+
+.es-edit {
+  order: 1;
+  flex: 1 1 auto;
+  margin: 0;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.es-edit:focus {
+  outline: none;
+}
+/* // LS: was not well styleable (to use SVG), so we use own component with es-close class below
+.es-edit::-webkit-search-cancel-button {
+    color: @textColor;
+    // -webkit-appearance: none;
+}
+*/
+.es-close {
+  order: 2;
+  position: absolute;
+  height: 100%;
+  right: @es-select-width + @units0_3;
+}
+.es-select,
+.flex > .es-select {
+  order: 3;
+  display: flex;
+  width: @es-select-width;
+  align-content: stretch;
+  position: relative;
+  background-color: darken(@controlColor, 3%);
+  border: 1px solid @borderColor;
+  border-left-width: 0px;
+  fill: @textColor;
+  &:hover:not([data-disabled]) {
+    fill: @hoverColor;
+  }
+}
+.es-select[data-disabled] {
+  fill: @disabledColor;
+  color: @disabledColor;
+}
+.es-select svg {
+  position: absolute;
+}
+.editable-select[data-focused] {
+  .focused;
+}
+.dropdownList .canvas {
+  background-color: lighten(@controlColor, 3%);
+}
+.dropdownitem {
+  background-color: @controlColor;
+  color: @textColor;
+  border-color: @borderColor;
+  min-height: @fontLineSize + @units0_3;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.dropdownitem[data-focused],
+.dropdownitem[data-selected] {
+  .controlSelected;
+}
+.dropdowndata {
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.dropdownList {
+  border: 1px solid @borderColor;
+}
+.dropdownMargin {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.noMargin.dropdownMargin {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.dropdown {
+  display: inline-block;
+  .dropdownMargin;
+}
+
+.searchBox {
+  border: 1px solid @borderColor;
+  min-width: round(@fontSize*13.0);
+}
+.searchBox .es-edit,
+.searchBox .es-select {
+  border: 0px;
+}
+.searchBox .es-select {
+  width: 0px;
+}
+.searchBox .es-close {
+  right: @units0_3;
+}

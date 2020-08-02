@@ -1,0 +1,34 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+[data-id="mainSearchEditorDiv"] .fieldControl,
+[data-id="boxSortOrders"] .fieldControl {
+  //width: @units10_0; // #14202 - item 2
+  .labelLeftPadding;
+  .vSeparatorTiny;
+}
+[data-id="mainSearchEditorDiv"] .fieldEditControl,
+[data-id="boxSortOrders"] .fieldEditControl {
+  .vSeparatorTiny;
+}
+[data-id="mainSearchEditorDiv"] .operatorControl {
+  //min-width: @units8_0; // #14202 - item 2
+  //max-width: @units12_0;
+  .vSeparatorTiny;
+}
+[data-id="mainSearchEditorDiv"] .valueControl {
+  margin-right: @toolButtonSize + @units1_5; // #16429 - item 1
+}
+
+[data-id="mainSearchEditorDiv"] .matchCriteriaRow > * {
+  font-weight: bold; // #14202 - item 1
+}
+
+[data-id="mainSearchEditorDiv"] .toolButton {
+  padding-top: @lvItemPadding;
+  padding-bottom: @lvItemPadding;
+  &:hover {
+    background-color: inherit;
+    fill: @highlightColor;
+    cursor: pointer;
+  }
+}

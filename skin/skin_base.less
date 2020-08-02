@@ -1,0 +1,121 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+/* basic color definition */
+@baseColor: @blackLight;
+
+@blackDark: #1e1e1e;
+@blackMedium: #252526;
+@blackLight: #333333;
+@primaryLight: #678cbd;
+@white: #e2e1e1;
+@whiteMedium: #afafaf;
+
+@controlColor: lighten(@baseColor, 5%);
+@textColor: contrast(@baseColor, @blackDark, @white);
+@warningColor: @primaryLight;
+@warningBgColor: average(@warningColor, @baseColor);
+@errorColor: red;
+@errorBgColor: #de2121;
+@selectedColor: darken(@baseColor, 8%);
+@disabledSelectedColor: desaturate(darken(@baseColor, 4%), 50%);
+@headerColor: darken(@baseColor, 8%);
+@hoverColor: darken(@warningColor, 6%);
+@hoverBgColor: darken(@baseColor, 3%);
+@shadowColor: rgb(0, 0, 0, 0.35);
+
+@highlightColor: @warningColor;
+@accentColor: @highlightColor; // Supposed to be used for even more highlight
+@highlightBgColor: darken(@highlightColor, 12%);
+@infoColor: spin(@warningColor, 180);
+@iconColor: @textColor;
+@disabledColor: #989898;
+@disabledBgColor: @disabledColor;
+@tooltipBgColor: @warningBgColor;
+@hotlinkColor: @highlightColor;
+@lookupColor: green;
+
+@transparentFadeout: 20%;
+@transparentBackground: fadeout(@baseColor, @transparentFadeout);
+
+@animationTime: 0.3s;
+
+@borderColor: darken(@baseColor, 8%);
+@borderStyle: solid;
+@borderWidth: 1px;
+
+@windowBorderSize: 2px;
+@windowBorderColor: @borderColor;
+
+@spacingXXS: @units0_25;
+@spacingXS: @units0_5;
+@spacingS: @units0_75;
+
+@baseFontSize: 13px;
+@fontSizeMultiplier: 1;
+@fontSize: @baseFontSize * @fontSizeMultiplier;
+
+@rowHeight: @units2_2;
+@defaultMargin: @units0_5;
+@fontLineSize: @units1_2; // adjusted size of skin main font
+@fontSizeSmaller: @units0_8;
+@fontSizeSlightlyLarger: @units1_2;
+@fontSizeLarger: @units1_4;
+
+@textVerticalPadding: @units0_15;
+@textHorizontalPadding: @units0_25;
+@toolButtonPadding: @units0_5;
+
+@borderRadius: @units0_2; // Default rounding of borders
+
+@defaultFontWeight: normal;
+
+@windowHeaderHeight: @rowHeight;
+
+// colors used for selection icons
+@selectedBgColor: mix(@baseColor, @borderColor);
+@selectedBgColorR: fade(@selectedBgColor, 85%); // for rows
+@selectedHoverColor: mix(@selectedBgColor, @hoverColor);
+
+// default koeficient for size of items in grids
+@gridItemSizeKoef: 1;
+
+// koeficient for size of items in artwork list
+@artworkListItemSizeKoef: 1;
+
+//easings
+@easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+@easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+@easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+@easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+@easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+@easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+@easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+@easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+@easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+@easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+@easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+@easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+@easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+@easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+@easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+@easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+@easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+@easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+@easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+@easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+@defaultEasing: @easeOutQuint;
+
+@font-face {
+  font-family: Roboto;
+  src: url("/skin/fonts/Roboto-Regular.ttf");
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  font-weight: @defaultFontWeight;
+  letter-spacing: 0.025rem;
+  transition-timing-function: @defaultEasing;
+  animation-timing-function: @defaultEasing;
+}

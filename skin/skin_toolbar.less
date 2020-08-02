@@ -1,0 +1,25 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.toolbar {
+  .flex;
+  .flex.row;
+  overflow: hidden;
+}
+
+.toolbar .toolbar {
+  // remove padding for nested toolbar, not needed
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.toolbar > .verticalCenter {
+  align-self: center;
+}
+
+.toolbar hr {
+  border-color: lighten(@controlColor, 10%);
+  margin-left: round(@fontLineSize / 3);
+  margin-right: round(@fontLineSize / 3);
+  margin-top: 0;
+  margin-bottom: 0;
+}

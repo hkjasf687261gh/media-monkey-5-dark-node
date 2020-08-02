@@ -1,0 +1,74 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.animCheck {
+  .inline;
+  .noWrap;
+}
+
+.menuitem > .animCheck {
+  .flexcenter; // #16400
+}
+
+.animCheck input[type="radio"] {
+  border-radius: 50%;
+  margin-top: -@units0_1;
+}
+
+.animCheck input[type="checkbox"],
+.animCheck input[type="radio"] {
+  width: @units1_0;
+  height: @units1_0;
+  border: 1px solid @textColor;
+  -webkit-appearance: none;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.animCheck input[type="checkbox"]:disabled,
+.animCheck input[type="radio"]:disabled {
+  border: 1px solid @disabledColor;
+}
+
+.animCheck span[data-icon] svg {
+  height: @units1_0;
+  width: @units1_0;
+  fill: @textColor;
+}
+
+.animCheck span[data-input_container] {
+  padding: 0;
+  margin: 0;
+  margin-right: @units0_2;
+  margin-left: @units0_2;
+  align-items: center;
+  display: inline-block;
+}
+
+.animCheck svg[svgchk] {
+  position: absolute;
+  width: @units0_8;
+  height: @units0_8;
+  margin-left: -@units0_9;
+  margin-top: @units0_1;
+  pointer-events: none;
+}
+
+.animCheck svg[svgchk] path {
+  stroke: @textColor;
+  stroke-width: 13px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: transparent;
+}
+
+.animCheck svg[data-disabled] path {
+  stroke: @disabledColor;
+  fill: transparent;
+}
+
+.animCheck[data-disabled] label {
+  color: @disabledColor;
+}

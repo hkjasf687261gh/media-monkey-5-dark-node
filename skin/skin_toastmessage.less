@@ -1,0 +1,73 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.tooltipBase {
+  .grindEdge;
+  background: @tooltipBgColor;
+  color: @textColor;
+  box-shadow: 2px 2px 4px @shadowColor;
+}
+
+.toastContainer {
+  .padding;
+  position: absolute;
+  bottom: @units0_5;
+  left: @units1_0;
+  right: @units1_0;
+  text-align: center;
+  z-index: 2147483647;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.toast {
+  .tooltipBase;
+  overflow: hidden;
+  display: inline-flex;
+}
+
+.toast .button {
+  pointer-events: auto;
+}
+
+.toast .clickable {
+  pointer-events: auto;
+}
+
+.toast .closeButton {
+  align-self: flex-start;
+  width: @units1_5;
+  height: @units1_5;
+  pointer-events: auto;
+}
+
+.toast [data-id="toastText"] {
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: round(@fontSize*36.0);
+}
+
+.tooltipMaxWidth {
+  max-width: round(@fontSize*35);
+}
+
+.tooltip {
+  .tooltipBase;
+  position: absolute;
+  display: block;
+  z-index: 2147483647;
+  padding: @units0_5 @units0_5;
+  white-space: normal;
+  overflow: hidden;
+  word-wrap: break-word;
+  max-height: 96%;
+
+  & .hotlink,
+  & .hotlink:hover,
+  & .clickable,
+  & .clickable:hover {
+    // hotlinks in tooltips do not display as hotlinks
+    color: inherit;
+    text-decoration: inherit;
+    fill: inherit;
+  }
+}

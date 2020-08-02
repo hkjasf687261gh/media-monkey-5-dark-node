@@ -1,0 +1,231 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+@-webkit-keyframes hide {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes show {
+  from {
+    opacity: 0;
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes slideLeftOut {
+  from {
+    transform: translate(0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate(-110%, 0);
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes slideLeftIn {
+  from {
+    transform: translate(110%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate(0, 0);
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes slideRightIn {
+  from {
+    transform: translate(-110%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate(0, 0);
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes zoomIn {
+  from {
+    transform: scale(0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: scale(1, 1);
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes zoomOut {
+  from {
+    transform: scale(1, 1);
+    visibility: visible;
+  }
+  to {
+    transform: scale(0, 0);
+    visibility: visible;
+  }
+}
+
+@keyframes animatedBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  4% {
+    background-position: 0% 0%;
+  }
+  96% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.animBackground {
+  .no-cpu;
+  animation: animatedBackground 12s linear infinite alternate both;
+}
+
+.animPaused {
+  animation-play-state: paused;
+}
+
+.animSlideLeftOut {
+  .no-cpu;
+  -webkit-animation-name: slideLeftOut;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease;
+}
+
+.animSlideLeftIn {
+  .no-cpu;
+  -webkit-animation-name: slideLeftIn;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease;
+}
+
+.animSlideRightIn {
+  .no-cpu;
+  -webkit-animation-name: slideRightIn;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease;
+}
+
+.controlAnimHide {
+  .no-cpu;
+  -webkit-animation-name: hide;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease-out;
+}
+
+.controlAnimShow {
+  .no-cpu;
+  -webkit-animation-name: show;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease-out;
+}
+
+.animViewZoomIn {
+  .no-cpu;
+  -webkit-animation-name: zoomIn;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease-in;
+}
+
+.animViewZoomOut {
+  .no-cpu;
+  -webkit-animation-name: zoomOut;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease-out;
+}
+
+.animViewFadeIn {
+  .no-cpu;
+  -webkit-animation-name: show;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease-out;
+}
+
+.animViewFadeOut {
+  .no-cpu;
+  -webkit-animation-name: hide;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease-in;
+}
+
+.animHeight {
+  .no-cpu;
+  transition: height @animationTime, min-height @animationTime,
+    max-height @animationTime;
+  transition-timing-function: ease-in;
+}
+
+.animWidth {
+  .no-cpu;
+  transition: width @animationTime, min-width @animationTime,
+    max-width @animationTime;
+  transition-timing-function: ease-in;
+}
+
+// class for getting animationTime from JS
+.animationTime {
+  transition-duration: @animationTime;
+}
+
+.appFade {
+  .no-cpu;
+  transition: opacity @animationTime;
+}
+
+.no-cpu {
+  // translateZ() or translate3d() will still be needed by some browsers as a fallback, but the will-change property is the future (taken from #15267 links)
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  will-change: transform;
+}
+
+@-webkit-keyframes fadeWindowOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes fadeWindowIn {
+  from {
+    opacity: 0;
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.windowAnimHide {
+  -webkit-animation-name: fadeWindowOut;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease-out;
+}
+
+.windowAnimShow {
+  -webkit-animation-name: fadeWindowIn;
+  -webkit-animation-duration: @animationTime;
+  -webkit-animation-timing-function: ease-out;
+}

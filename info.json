@@ -1,0 +1,9 @@
+{
+  "title": "Dark Node v1.0.0",
+  "id": "dark-node",
+  "description": "Dark themed skin",
+  "version": "1.0.0",
+  "type": "skin",
+  "author": "Citizen Staefn",
+  "icon": "./docs/images/main.png"
+}

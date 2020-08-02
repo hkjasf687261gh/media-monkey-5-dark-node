@@ -1,0 +1,92 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.navbar {
+  vertical-align: baseline;
+  white-space: nowrap;
+  padding-left: @units0_4;
+}
+.navbar .button_container {
+  width: auto;
+  margin-top: 0;
+  position: relative;
+}
+
+.navbar .button_container .toolbutton label[data-navbar-button-label] {
+  padding-left: @units0_5;
+  vertical-align: super;
+}
+
+.shrinked [data-id="labelSpan"] {
+  .textEllipsis;
+  max-width: round(@fontSize*12.0);
+}
+
+.navbar
+  .button_container
+  .toolbutton
+  label[data-navbar-button-label]
+  > div.rating {
+  margin-left: -@units0_5;
+}
+
+.navbar .button_container .popupButton svg {
+  .ignoreMouse;
+  padding-top: @units0_2;
+}
+
+.navbar .button_container .toolbutton {
+  width: auto;
+
+  &[data-dummy-popup] {
+    //padding-right: 0px;
+  }
+}
+
+.noNavBarButtonMargin {
+  margin-right: -@units0_3;
+}
+
+.navbar .toolbutton[data-dummy-popup] {
+  .noNavBarButtonMargin;
+  padding-right: 0;
+}
+
+.navbar .toolbutton.popupButton:not([data-dummy-popup]) {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.navbar .toolbutton.popupButton {
+  z-index: 100;
+  padding-left: 4;
+  padding-right: 4px;
+  margin-left: 0px;
+  margin-right: -5px;
+}
+
+.navbar .toolbutton {
+  margin-right: @units0_1;
+  margin-left: @units0_1;
+}
+
+.navbar .appendix {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.navbar .toolbutton .icon,
+.navbar .toolbutton svg {
+  width: auto;
+  height: @units1_3;
+}
+.navbar .toolbutton .rating .ratingStar svg {
+  height: inherit;
+  fill: inherit;
+}
+.navbar .toolbutton .rating {
+  display: inline-block;
+}
+
+.navbar div .btn:hover {
+  .grindEdge;
+}

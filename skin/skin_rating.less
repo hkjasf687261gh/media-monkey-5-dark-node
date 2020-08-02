@@ -1,0 +1,79 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+.ratingStar {
+  fill: @textColor;
+}
+.ratingCanvas {
+}
+.ratingStar[data-emptystar] {
+  opacity: 0.2;
+}
+.ratingCanvas[data-unknown] {
+  opacity: 0.25;
+}
+.rating {
+  overflow: hidden;
+}
+.ratingFlex {
+  display: flex;
+  align-items: center;
+}
+.ratingCanvas.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.ratingCanvas.left {
+  margin-right: auto;
+  text-align: left;
+}
+.ratingCanvas.right {
+  margin-right: auto;
+  text-align: right;
+}
+.ratingCanvas:focus:not([data-disabled]):not([data-readonly]) {
+  .focused;
+}
+.ratingStar[data-fullstar] {
+  opacity: 1;
+}
+.ratingStar[data-halfstar] {
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left bottom,
+    right bottom,
+    color-stop(0%, rgba(0, 0, 0, 1)),
+    color-stop(45%, rgba(0, 0, 0, 1)),
+    color-stop(50%, rgba(0, 0, 0, 0.2)),
+    color-stop(100%, rgba(0, 0, 0, 0.2))
+  );
+}
+.ratingCanvas[data-hover] .ratingStar,
+.itemNowPlaying .ratingStar {
+  fill: @warningColor;
+}
+.ratingCanvas[data-disabled] .ratingStar,
+.itemInaccessible .ratingStar,
+.itemInaccessible[data-selected] .ratingStar {
+  fill: @disabledColor;
+}
+
+.ratingPreview {
+  width: 300px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  z-index: 2147483647;
+}
+.ratingPreview .ratingStar {
+  width: 40px;
+  height: 40px;
+}
+.ratingCanvas.flex {
+  width: 100%;
+  align-items: center;
+}
+.ratingCanvas.flex > .ratingStar {
+  width: auto;
+}

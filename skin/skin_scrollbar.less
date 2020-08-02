@@ -1,0 +1,47 @@
+/* '(C) Ventis Media, Licensed under the Ventis Limited Reciprocal License - see: license.txt for details' */
+
+@scrollbarSize: @units0_8;
+@scrollbarSizeInner: @units0_7;
+
+::-webkit-scrollbar {
+  width: @scrollbarSize;
+  height: @scrollbarSize;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  .grindEdge;
+  // box-shadow: inset 0 0 0.3em @shadowColor;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  .grindEdge;
+  background: @highlightBgColor;
+  // box-shadow: inset 0 0 @units0_3 @shadowColor;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar {
+  background-color: @blackLight;
+  transition: background-color @animationTime;
+  -webkit-transition: background-color @animationTime;
+}
+
+::-webkit-scrollbar:hover {
+  background-color: @blackMedium;
+}
+
+body {
+  /* This is scrollbar fallback for IE and other non-WebKit browsers, where support for skinned scrollbars is limited*/
+  scrollbar-face-color: @highlightBgColor;
+  scrollbar-arrow-color: @textColor;
+  scrollbar-track-color: @controlColor;
+  scrollbar-shadow-color: @highlightBgColor;
+  scrollbar-highlight-color: @highlightBgColor;
+  scrollbar-3dlight-color: @highlightBgColor;
+  scrollbar-darkshadow-color: @highlightBgColor;
+}
